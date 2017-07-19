@@ -22,13 +22,4 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
-
-	public function test()
-	{
-		$data = [
-			'nama',
-			'alamat',
-		];
-		dd($data);
-	}
 }
