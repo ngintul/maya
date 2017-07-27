@@ -15,7 +15,7 @@ class Orm
 		$capsule->addConnection([
 			'driver' => env('DB_DRIVER', 'mysql'),
 			'host' => env('DB_HOST', 'localhost'),
-			'database'  => env('DB_NAME', ''),
+			'database'  => env('DB_NAME', 'test'),
 			'username' => env('DB_USER', 'root'),
 			'password' => env('DB_PASS', ''),
 		]);
