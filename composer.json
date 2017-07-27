@@ -11,15 +11,21 @@
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
-		"php": ">=5.2.4",
+		"php": ">=5.6.14",
 		"illuminate/database": "^5.4",
 		"symfony/var-dumper": "^3.2",
-		"vlucas/phpdotenv": "^2.4"
+		"vlucas/phpdotenv": "^2.4",
+		"monolog/monolog": "^1.23"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
 	},
 	"require-dev": {
 		"mikey179/vfsStream": "1.1.*"
+	},
+	"autoload": {
+		"classmap": [
+			"application/models"
+		]
 	}
 }
