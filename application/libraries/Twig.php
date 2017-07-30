@@ -5,17 +5,20 @@ class Twig
 {
 	private $paths = [];
 
-	private $config = [];
+	private $config = [
+
+	];
 
 	private $functions_asis = [
-		'base_url', 'site_url', 'anchor', 'current_url', 'uri_string', 
+		'base_url', 'site_url',  
+		'current_url', 'uri_string', 'segment',
 	];
 
 	private $functions_safe = [
 		'form_open', 'form_close', 'form_error', 'form_hidden', 'set_value',
 		'form_open_multipart', 'form_upload', 'form_submit', 'form_dropdown',
 		'form_input', 'set_radio',
-		'dd', 'dump',
+		'dd', 'dump', 'carbon', 'collect', 'env'
 	];
 
 	private $functions_added = FALSE;
@@ -55,7 +58,7 @@ class Twig
 
 		// default Twig config
 		$this->config = [
-			'cache'      => APPPATH . 'cache/twig',
+			'cache'      => (ENVIRONMENT === 'production' ? APPPATH . 'cache/twig' : false),
 			'debug'      => ENVIRONMENT !== 'production',
 			'autoescape' => 'html',
 		];

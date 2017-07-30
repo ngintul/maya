@@ -1,0 +1,39 @@
+{% extends 'layouts/bunga.twig' %}
+
+{% block title %}
+	Halaman Awal
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<h1 class="text-center"><strong>Selamat Datang</strong></h1>
+				<hr style="border: 1px solid #ccc; margin-top: 0px;">
+				<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem atque tempore magni dignissimos inventore alias fugiat in veniam minima odit delectus eius, animi laudantium quas a, id molestias eum perspiciatis.</p>
+				<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure eaque deserunt dolorum dolor odio, modi debitis, earum, molestiae omnis excepturi exercitationem laudantium veniam. Quae voluptatum itaque eos, id sint eius.</p>
+				<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias fugit blanditiis similique, ut omnis beatae vitae facere, quod libero laboriosam perferendis aliquid consequuntur optio dolores? Ea, nulla officia et laboriosam!</p>
+			</div>
+		</div>
+		<br><br>
+		<div class="clearfix"> </div> 
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			{% for item in range(1, 8) %}
+			<div class="col-sm-3 col-xs-6 gallery-grids">
+				<div class="effect">
+						<figure class="effect-chico">
+							<img src="//via.placeholder.com/500x300" alt="" class="img-responsive">
+							<figcaption>
+								<h4>Nam ornare</h4>
+							</figcaption>			
+						</figure>
+					</div>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="clearfix"> </div> 
+	</div>
+{% endblock %}
+

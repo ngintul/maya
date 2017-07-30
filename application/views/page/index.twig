@@ -1,0 +1,76 @@
+{% extends 'layouts/bunga.twig' %}
+
+{% block title %}
+	Halaman Awal
+{% endblock %}
+
+{% block css %}
+
+	<link rel="stylesheet" href="{{ base_url('assets/css/hexagons.css') }}">
+{% endblock %}
+
+{% block content %}
+
+	<div id="carousel" class="carousel slide" data-ride="carousel">
+	    <div class="carousel-inner">
+            <div class="item active" style="height:100%">
+                <img src="http://via.placeholder.com/1400x500">
+	        </div>
+            <div class="item" style="height:100%">
+                <img src="http://via.placeholder.com/1400x500">
+	        </div>
+        </div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<h1 class="text-center section-title"><strong>Selamat Datang</strong></h1>
+				<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem atque tempore magni dignissimos inventore alias fugiat in veniam minima odit delectus eius, animi laudantium quas a, id molestias eum perspiciatis.</p>
+				<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure eaque deserunt dolorum dolor odio, modi debitis, earum, molestiae omnis excepturi exercitationem laudantium veniam. Quae voluptatum itaque eos, id sint eius.</p>
+				<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias fugit blanditiis similique, ut omnis beatae vitae facere, quod libero laboriosam perferendis aliquid consequuntur optio dolores? Ea, nulla officia et laboriosam!</p>
+			</div>
+		</div>
+		<br><br>
+		<div class="clearfix"> </div> 
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			{% for item in range(1, 8) %}
+			<div class="col-sm-3 col-xs-6 gallery-grids">
+				<div class="effect">
+						<figure class="effect-chico">
+							<img src="//via.placeholder.com/500x300" alt="" class="img-responsive">
+							<figcaption>
+							</figcaption>			
+						</figure>
+					</div>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="clearfix"> </div> 
+	</div>
+
+	<section style="background-color: #00e676;">
+		<div class="container">
+			<h1 class="text-center section-title"><strong>Cara Order / Pemesanan</strong></h1>
+			<div class="row">
+				<div class="col-sm-3">
+					{# <p class="order">Silahkan Anda pilih kategori produk bunga yang akan di pesan, kemudian konsultasikan melalui Panggilan Telepon atau Chat WhatsApp sehingga kami mudah melakukan presentasi tentang keinginan produk yang akan Anda pesan. Apabila harga cocok, silahkan Anda mentransfer sejumlah uang sesuai harga kesepakatan ke No Rekening kami, kemudian konfirmasi pembayaran kepada kami.</p> #}
+				</div>
+				<div class="col-sm-6">
+					<img src="{{ base_url('assets/images/service_progress.png') }}" alt="" class="img-responsive">
+				</div>
+				<div class="col-sm-3">
+					{# <p class="order">Langkah selanjutnya, kami akan memproses pesanan Bunga sesuai dengan kriteria yang Anda inginkan, setelah itu kami akan mengirimkan pesanan Anda melalui kurir secara GRATIS ke Alamat yang di tujukan. Dan setelah pesanan sampai di alamat tujuan, kami akan mengirimkan bukti photo bahwa pesanan yang telah kami proses sudah BERHASIL TERKIRIM.</p> #}
+				</div>
+			</div>
+			<br><br>
+			<div class="clearfix"> </div> 
+		</div>
+	</section>
+	<br><br>
+
+	{% include 'page/contact.twig' %}
+
+{% endblock %}
+

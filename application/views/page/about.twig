@@ -1,0 +1,35 @@
+{% extends 'layouts/bunga.twig' %}
+
+{% block title %}
+	Tentang Toko
+{% endblock %}
+
+{% block js %}
+	<script>
+		function Maps() {
+			var myCenter = new google.maps.LatLng(-6.993283, 110.576514);
+			var mapCanvas = document.getElementById("map");
+			var mapOptions = {
+				center: myCenter, 
+				zoom: 15,
+				scrollwheel: false
+			};
+			var map = new google.maps.Map(mapCanvas, mapOptions);
+			var marker = new google.maps.Marker({position:myCenter});
+			marker.setMap(map);
+			var infowindow = new google.maps.InfoWindow({
+				content: "GALAXI.net"
+			});
+			infowindow.open(map,marker);
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn_Zip1rkKpUpRPts-RWCQsEjreAjWaoU&callback=Maps"></script>
+{% endblock %}
+
+{% block content %}
+	<h1 class="text-center section-title"><strong>Lokasi</strong></h1>
+	<div class="">
+		<div id="map" style="width:100%; height: 400px;"></div>
+	</div>
+	{% include 'page/contact.twig' %}
+{% endblock %}

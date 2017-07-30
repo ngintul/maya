@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>{% block title %}{% endblock %} - Maya Florist</title>
+	<link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
+	<link rel="stylesheet" href="//nandhief.web.id/assets/css/normalize.css">
+	<link rel="stylesheet" href="//nandhief.web.id/assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="//nandhief.web.id/assets/css/bootstrap.min.css">
+	{% include 'layouts/css.twig' %}
+	{% block css %}{% endblock %}
+
+	<!--[if lt IE 9]>
+		<script src=""//nandhief.web.id/assets/js/html5shiv.min.js></script>
+		<script src=""//nandhief.web.id/assets/js/respond.min.js></script>
+	<![endif]-->
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="small-logo-container">
+            <a class="small-logo" href="{{ base_url() }}"><img src="{{ base_url('assets/images/logo-thumb.png') }}" alt="Maya Florist"></a>
+          </div>
+        </div>
+        <div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="{{ base_url() == current_url() ? 'active' }}"><a href="{{ base_url() }}">Home</a></li>
+				<li class="{{ segment(1) == 'produk' ? 'active' }}"><a href="{{ base_url('produk') }}">Produk</a></li>
+				<li class="{{ segment(1) == 'galeri' ? 'active' }}"><a href="{{ base_url('galeri') }}">Galeri</a></li>
+				<li class="{{ segment(1) == 'tentang' ? 'active' }}"><a href="{{ base_url('tentang') }}">Tentang Toko</a></li>
+			</ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="big-logo-row">
+		<div class="big-logo-container">
+			<div class="">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<img src="{{ base_url('assets/images/logo.png') }}" alt="" class="big-logo img-responsive" width="400px">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+
+	{% block content %}{% endblock %}
+		
+	<footer style="background-color: #20ac58;">
+		<div class="footer">
+			<div class="container"> 
+				<div class="social">
+					<a href="//twitter.com/" target="_blank" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+					<a href="//facebook.com/" target="_blank" class="social-button facebook"><i class="fa fa-facebook"></i></a> 
+					<a href="//plus.google.com/" target="_blank" class="social-button google"><i class="fa fa-google-plus"></i></a> 
+					<a href="//instagram.com/" target="_blank" class="social-button instagram"><i class="fa fa-instagram"></i></a> 
+				</div>      
+			</div>
+		</div>
+		<div class="copy-right">
+			<div class="container">
+				<p>© 2017 Maya Florist. All rights reserved | powered by <a href="//nandhief.web.id/" target="_blank">nandhief</a></p>
+			</div>
+		</div>
+	</footer>
+
+	<a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 0;"></span>To Top</a>
+
+	<script src="//nandhief.web.id/assets/js/jquery-1.11.3.min.js"></script>
+	<script src="//nandhief.web.id/assets/js/bootstrap.min.js"></script>
+	{% include 'layouts/js.twig' %}
+	{% block js %}{% endblock %}
+
+</body>
+</html>

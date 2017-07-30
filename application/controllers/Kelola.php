@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller 
+class Kelola extends CI_Controller 
 {
 
 	public function index()
@@ -11,21 +11,16 @@ class Welcome extends CI_Controller
 
 	public function produk()
 	{
-		return $this->twig->display('page/produk');
+		return dd('Produk');
 	}
 
 	public function galeri()
 	{
-		return $this->twig->display('page/galeri');
+		return dd('Galeri');
 	}
 
 	public function tentang()
 	{
-		return $this->twig->display('page/about');
-	}
-
-	public function blog()
-	{
-		return $this->twig->display('page/item');
+		return dd('Tentang');
 	}
 }
