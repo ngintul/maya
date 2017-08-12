@@ -1,12 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use Intervention\Image\ImageManagerStatic as Image;
+
 class Produk extends CI_Controller 
 {
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model(['Product', 'Category', 'Tag']);
+		Image::configure(['driver' => 'imagick']);
 	}
 
 	public function index()
@@ -19,6 +22,8 @@ class Produk extends CI_Controller
 	{
 		if (!empty($_POST)) {
 			$_POST['slug'] = str_slug($_POST['title']);
+			$_POST['image'] = $_FILES['image']['name'];
+			Image::make($_FILES['image']['tmp_name'])->fit(600, 600)->save('./assets/images/' . $_FILES['image']['name']);
 			foreach ($_POST['tag'] as $key => $value) {
 				$data = Tag::whereSlug(str_slug($value))->first();
 				if ($data) {
@@ -49,6 +54,8 @@ class Produk extends CI_Controller
 		if (!empty($_POST)) {
 			$_POST['title'] = ucwords($_POST['title']);
 			$_POST['slug'] = str_slug($_POST['title']);
+			$_POST['image'] = $_FILES['image']['name'];
+			$image = Image::make($_FILES['image']['tmp_name'])->fit(600, 600)->save('./assets/images/' . $_FILES['image']['name']);
 			foreach ($_POST['tag'] as $key => $value) {
 				$data = Tag::whereSlug(str_slug($value))->first();
 				if ($data) {

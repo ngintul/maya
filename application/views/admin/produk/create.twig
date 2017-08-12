@@ -10,14 +10,18 @@
 
 {% block content %}
 			<div class="row">
-				{{ form_open() }}
-					<div class="form-group col-md-12 col-sm-12">
+				{{ form_open_multipart() }}
+					<div class="form-group col-md-6 col-sm-6">
 						<label for="">Nama Produk</label>
 						<input type="text" name="title" id="title" class="form-control" placeholder="Masukkan Nama Produk" required>
 					</div>
 					<div class="form-group col-md-6 col-sm-6">
+						<label for="">Gambar Produk</label>
+						<input type="file" name="image" id="image" class="form-control">
+					</div>
+					<div class="form-group col-md-6 col-sm-6">
 						<label for="">Kategori Produk</label>
-						<select name="cat_id" id="cat_id" class="form-control">
+						<select name="cat_id" id="cat_id" class="form-control" style="width: 100%;">
 							<option></option>
 							{% for item in categories %}
 							<option value="{{ item.id }}">{{ item.name|title }}</option>
@@ -26,7 +30,7 @@
 					</div>
 					<div class="form-group col-md-6 col-sm-6">
 						<label for="">Label Produk</label>
-						<select name="tag[]" id="tag" class="form-control" multiple>
+						<select name="tag[]" id="tag" class="form-control" style="width: 100%;" multiple>
 							<option></option>
 							{% for item in tags %}
 							<option value="{{ item.name|title }}">{{ item.name|title }}</option>
@@ -68,23 +72,9 @@
 				statusbar: false,
 				height: 300,
 				paste_data_images: true,
-                plugins: 'advlist autolink link image lists charmap print preview emoticons table code',
-                toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | formatselect fontselect fontsizeselect | bullist numlist outdent indent blockquote | emoticons',
-				// file_picker_callback: function(callback, value, meta) {
-				// 	if (meta.filetype == 'image') {
-				// 		$('#upload').trigger('click');
-				// 		$('#upload').on('change', function() {
-				// 			var file = this.files[0];
-				// 			var reader = new FileReader();
-				// 			reader.onload = function(e) {
-				// 				callback(e.target.result, {
-				// 					alt: ''
-				// 				});
-				// 			};
-				// 			reader.readAsDataURL(file);
-				// 		});
-				// 	}
-				// }
+                plugins: 'advlist autolink link image lists charmap print preview emoticons table code jbimages',
+                toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | formatselect fontselect fontsizeselect | bullist numlist outdent indent blockquote | jbimages emoticons',
+                relative_urls: false
             });
 		});
 	</script>

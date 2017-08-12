@@ -9,12 +9,16 @@
 {% endblock %}
 
 {% block content %}
-
-	{{ form_open() }}
+	
+	{{ form_open_multipart() }}
 		<div class="row">
-			<div class="form-group col-md-12 col-sm-12">
+			<div class="form-group col-md-6 col-sm-6">
 				<label for="">Nama Produk</label>
 				<input type="text" name="title" id="title" class="form-control" placeholder="Masukkan Nama Produk" required value="{{ product.title }}">
+			</div>
+			<div class="form-group col-md-6 col-sm-6">
+				<label for="">Gambar Produk</label>
+				<input type="file" name="image" id="image" class="form-control">
 			</div>
 			<div class="form-group col-md-6 col-sm-6">
 				<label for="">Kategori Produk</label>
@@ -72,8 +76,9 @@
 				statusbar: false,
 				height: 300,
 				paste_data_images: true,
-                plugins: 'advlist autolink link image lists charmap print preview emoticons table code',
-                toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | formatselect fontselect fontsizeselect | bullist numlist outdent indent blockquote | emoticons'
+                plugins: 'advlist autolink link image lists charmap print preview emoticons table code jbimages',
+                toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | formatselect fontselect fontsizeselect | bullist numlist outdent indent blockquote | jbimages emoticons',
+                relative_urls: false
             });
 		});
 	</script>

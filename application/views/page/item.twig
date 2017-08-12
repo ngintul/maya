@@ -23,7 +23,7 @@
 						<h3 class="title">{{ product.title|title }}</h3>
 						<hr>
 						<p>
-							<img src="//via.placeholder.com/600x600" alt="" class="img-responsive" style="width: 100%; height: 600px;">
+							<img src="{{ base_url('assets/images/') }}{{ product.image }}" alt="" class="img-responsive" style="width: 100%; height: 600px;">
 						</p>
 						<hr>
 						{{ product.detail|raw }}
