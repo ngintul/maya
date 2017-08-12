@@ -18,7 +18,8 @@ class Twig
 		'form_open', 'form_close', 'form_error', 'form_hidden', 'set_value',
 		'form_open_multipart', 'form_upload', 'form_submit', 'form_dropdown',
 		'form_input', 'set_radio',
-		'dd', 'dump', 'carbon', 'collect', 'env'
+		'dd', 'dump', 'carbon', 'collect', 'env', 'e',
+		'str_limit', 'strip_tags', 'json_encode', 
 	];
 
 	private $functions_added = FALSE;

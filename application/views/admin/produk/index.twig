@@ -1,0 +1,62 @@
+{% extends 'layouts/app.twig' %}
+
+{% block title %}
+	Produk
+{% endblock %}
+
+{% block header %}
+	<h1> Produk </h1>
+{% endblock %}
+
+{% block content %}
+	<a href="{{ base_url() }}manage/produk/tambah" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+	<br><br>
+	<div class="table-responsive">
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="20px">#</th>
+					<th>Nama Produk</th>
+					<th>Url</th>
+					<th>Keterangan</th>
+					<th width="80">&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in products %}
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ item.title }}</td>
+					<td><a href="{{ base_url('blog/') }}{{ item.slug }}" target="_blank">{{ base_url('blog/') }}{{ item.slug }}</a></td>
+					<td>{{ strip_tags(str_limit(item.detail, 100)) }}</td>
+					<td>
+						<a href="{{ base_url('manage/produk/detail/') }}{{ item.id }}" class="btn btn-info btn-xs"><i class="fa fa-eye"></i></a>
+						<a href="{{ base_url('manage/produk/edit/') }}{{ item.id }}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+						<a href="{{ base_url('manage/produk/hapus/') }}{{ item.id }}" class="btn btn-danger btn-xs" onclick="return confirm('Yakin hapus data')"><i class="fa fa-trash"></i></a>
+					</td>
+				</tr>
+				{% endfor %}
+				
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ base_url() }}assets/css/dataTables.bootstrap.min.css">
+{% endblock %}
+
+{% block js %}
+	<script src="{{ base_url() }}assets/js/jquery.dataTables.min.js"></script>
+	<script src="{{ base_url() }}assets/js/dataTables.bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function () {
+		$('.table').dataTable({
+			"columnDefs": [{
+				"targets": [4],
+				"orderable": false
+			}]
+		});
+	});
+	</script>
+{% endblock %}

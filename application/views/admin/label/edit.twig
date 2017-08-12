@@ -1,0 +1,28 @@
+{% extends 'layouts/app.twig' %}
+
+{% block title %}
+	Edit Label {{ tag.name }}
+{% endblock %}
+
+{% block header %}
+	<h1> Edit Label {{ tag.name }}</h1>
+{% endblock %}
+
+{% block content %}
+	<form action="{{ base_url('manage/label/edit/') }}{{ tag.id }}" method="post">
+		<div class="row">
+			<div class="col-md-12 col-sm-12">
+				<div class="form-group">
+					<label for="">Nama</label>
+					<input type="text" name="name" id="name" class="form-control" placeholder="Masukkan Nama Label" value="{{ tag.name }}">
+				</div>
+			</div>
+			<div class="col-md-12 col-sm-12">
+				<div class="form-group">
+					<button type="submit" name="simpan" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button> &nbsp;&nbsp;
+					<a href="{{ base_url('manage/label') }}" class="btn btn-danger"><i class="fa fa-reply"></i> Kembali</a>
+				</div>
+			</div>
+		</div>
+	</form>
+{% endblock %}

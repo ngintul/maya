@@ -1,0 +1,91 @@
+{% extends 'layouts/app.twig' %}
+
+{% block title %}
+	Tambah Produk
+{% endblock %}
+
+{% block header %}
+	<h1>Tambah Produk</h1>
+{% endblock %}
+
+{% block content %}
+			<div class="row">
+				{{ form_open() }}
+					<div class="form-group col-md-12 col-sm-12">
+						<label for="">Nama Produk</label>
+						<input type="text" name="title" id="title" class="form-control" placeholder="Masukkan Nama Produk" required>
+					</div>
+					<div class="form-group col-md-6 col-sm-6">
+						<label for="">Kategori Produk</label>
+						<select name="cat_id" id="cat_id" class="form-control">
+							<option></option>
+							{% for item in categories %}
+							<option value="{{ item.id }}">{{ item.name|title }}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="form-group col-md-6 col-sm-6">
+						<label for="">Label Produk</label>
+						<select name="tag[]" id="tag" class="form-control" multiple>
+							<option></option>
+							{% for item in tags %}
+							<option value="{{ item.name|title }}">{{ item.name|title }}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="form-group col-md-12 col-sm-12">
+						<label for="">Keterangan Produk</label>
+						<textarea name="detail" id="detail" placeholder="Keterangan Produk"></textarea>
+					</div>
+					<div class="form-group col-md-12 col-sm-12">
+						<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+					</div>
+				{{ form_close() }}
+			</div>
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ base_url() }}assets/css/select2.min.css">
+{% endblock %}
+
+{% block js %}
+	<script src="{{ base_url() }}assets/js/select2.full.min.js"></script>
+	<script src="{{ base_url() }}assets/tinymce/tinymce.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#cat_id').select2({
+				placeholder: "-- Pilih Kategori --",
+				allowClear: true
+			});
+			$('#tag').select2({
+				placeholder: "-- Pilih Label --",
+				allowClear: true,
+				tags: true,
+				tokenSeparators: [',']
+			});
+			tinymce.init({
+                selector: 'textarea',
+				statusbar: false,
+				height: 300,
+				paste_data_images: true,
+                plugins: 'advlist autolink link image lists charmap print preview emoticons table code',
+                toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | formatselect fontselect fontsizeselect | bullist numlist outdent indent blockquote | emoticons',
+				// file_picker_callback: function(callback, value, meta) {
+				// 	if (meta.filetype == 'image') {
+				// 		$('#upload').trigger('click');
+				// 		$('#upload').on('change', function() {
+				// 			var file = this.files[0];
+				// 			var reader = new FileReader();
+				// 			reader.onload = function(e) {
+				// 				callback(e.target.result, {
+				// 					alt: ''
+				// 				});
+				// 			};
+				// 			reader.readAsDataURL(file);
+				// 		});
+				// 	}
+				// }
+            });
+		});
+	</script>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'layouts/app.twig' %}
+
+{% block title %}
+	Detail Produk {{ product.name|title }}
+{% endblock %}
+
+{% block header %}
+	<h1> Detail Produk {{ product.name|title }}</h1>
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover">
+					<tbody>
+						<tr>
+							<th>Produk</th>
+							<td>{{ product.title|title }}</td>
+						</tr>
+						<tr>
+							<th>URL</th>
+							<td><a href="{{ base_url('blog/') }}{{ product.slug }}" target="_blank">{{ base_url('blog/') }}{{ product.slug }}</a></td>
+						</tr>
+						<tr>
+							<th>Kategori</th>
+							<td>
+								{% if not product.category.name %}
+									Tidak ada Kategori
+								{% else %}
+									<a href="{{ base_url('kategori/') }}{{ product.category.name }}" target="_blank">{{ product.category.name }}</a>
+								{% endif %}
+							</td>
+						</tr>
+						<tr>
+							<th>Label</th>
+							<td>
+								{% if not product.tags().get().count() %}
+									Tidak ada Label
+								{% else %}
+									{% for item in product.tags().get() %}
+										<div class="badge">{{ item.name }}</div>
+									{% endfor %}
+								{% endif %}
+							</td>
+						</tr>
+						<tr>
+							<th>Keterangan</th>
+							<td>{{ product.detail|raw }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<a href="{{ base_url('manage/produk/edit/') }}{{ product.id }}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
+			<a href="{{ base_url('manage/produk') }}" class="btn btn-danger"><i class="fa fa-reply"></i> Kembali</a>
+		</div>
+	</div>
+{% endblock %}

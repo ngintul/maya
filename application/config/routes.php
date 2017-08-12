@@ -56,7 +56,26 @@ $route['translate_uri_dashes'] = FALSE;
 /**
  * Route Application
  */
+/**
+ * Back end
+ */
+$route['manage/dashboard'] = 'kelola';
+$route['manage/kategori'] = 'kategori';
+$route['manage/kategori/(:any)'] = 'kategori/$1';
+$route['manage/kategori/(:any)/(:num)'] = 'kategori/$1/$2';
+$route['manage/label'] = 'label';
+$route['manage/label/(:any)'] = 'label/$1';
+$route['manage/label/(:any)/(:num)'] = 'label/$1/$2';
+$route['manage/produk'] = 'produk';
+$route['manage/produk/(:any)'] = 'produk/$1';
+$route['manage/produk/(:any)/(:num)'] = 'produk/$1/$2';
+
+/**
+ * Front end
+ */
 $route['produk'] = 'welcome/produk';
 $route['galeri'] = 'welcome/galeri';
 $route['tentang'] = 'welcome/tentang';
-$route['(:any)'] = 'welcome/blog';
+$route['blog/([a-zA-Z0-9_-]+)'] = 'welcome/blog/$1';
+$route['kategori/([a-zA-Z0-9_-]+)'] = 'welcome/kategori/$1';
+$route['label/([a-zA-Z0-9_-]+)'] = 'welcome/label/$1';

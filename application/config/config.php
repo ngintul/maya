@@ -25,7 +25,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '') . '://';
 $url = str_replace('index.php', "", $_SERVER['SCRIPT_NAME']);
+if (is_cli()) {
+	$config['base_url'] = '';
+} elseif ($_SERVER['SERVER_PORT'] != 80) {
 $config['base_url'] = $http . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . $url;
+} else {
+	$config['base_url'] = $http . $_SERVER['SERVER_NAME'] . $url;
+}
 
 /*
 |--------------------------------------------------------------------------

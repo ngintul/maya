@@ -1,0 +1,32 @@
+{% extends 'layouts/app.twig' %}
+
+{% block title %}
+	Detail Label {{ tag.name|title }}
+{% endblock %}
+
+{% block header %}
+	<h1> Detail Label {{ tag.name|title }}</h1>
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover">
+					<tbody>
+						<tr>
+							<th>Label</th>
+							<td>{{ tag.name|title }}</td>
+						</tr>
+						<tr>
+							<th>URL</th>
+							<td><a href="{{ base_url('label/') }}{{ tag.slug }}" target="_blank">{{ base_url('label/') }}{{ tag.slug }}</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<a href="{{ base_url('manage/label/edit/') }}{{ tag.id }}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
+			<a href="{{ base_url('manage/label') }}" class="btn btn-danger"><i class="fa fa-reply"></i> Kembali</a>
+		</div>
+	</div>
+{% endblock %}

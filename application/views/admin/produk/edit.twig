@@ -1,0 +1,80 @@
+{% extends 'layouts/app.twig' %}
+
+{% block title %}
+	Edit Produk {{ product.title }}
+{% endblock %}
+
+{% block header %}
+	<h1> Edit Produk {{ product.title }}</h1>
+{% endblock %}
+
+{% block content %}
+
+	{{ form_open() }}
+		<div class="row">
+			<div class="form-group col-md-12 col-sm-12">
+				<label for="">Nama Produk</label>
+				<input type="text" name="title" id="title" class="form-control" placeholder="Masukkan Nama Produk" required value="{{ product.title }}">
+			</div>
+			<div class="form-group col-md-6 col-sm-6">
+				<label for="">Kategori Produk</label>
+				<select name="cat_id" id="cat_id" class="form-control" style="width:100%;">
+					<option></option>
+					{% for item in categories %}
+					<option value="{{ item.id }}" {{ item.id == product.cat_id ? 'selected' }}>{{ item.name|title }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group col-md-6 col-sm-6">
+				<label for="">Label Produk</label>
+				<select name="tag[]" id="tag" class="form-control" style="width:100%;" multiple>
+					{% for item in tags %}
+					<option value="{{ item.name|title }}">{{ item.name|title }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group col-md-12 col-sm-12">
+				<label for="">Keterangan Produk</label>
+				<textarea name="detail" id="detail" placeholder="Keterangan Produk">{{ product.detail }}</textarea>
+			</div>
+			<div class="col-md-12 col-sm-12">
+				<div class="form-group">
+					<button type="submit" name="simpan" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button> &nbsp;&nbsp;
+					<a href="{{ base_url('manage/produk') }}" class="btn btn-danger"><i class="fa fa-reply"></i> Kembali</a>
+				</div>
+			</div>
+		</div>
+	{{ form_close() }}
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ base_url() }}assets/css/select2.min.css">
+{% endblock %}
+
+{% block js %}
+	<script src="{{ base_url() }}assets/js/select2.full.min.js"></script>
+	<script src="{{ base_url() }}assets/tinymce/tinymce.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#cat_id').select2({
+				placeholder: "-- Pilih Kategori --",
+				allowClear: true
+			});
+			$('#tag').select2({
+				placeholder: "-- Ketik Label --",
+				allowClear: true,
+				tags: true,
+				tokenSeparators: ','
+			});
+			$('#tag').select2().val({{ json_encode(product.tags().pluck('name').toArray()) }}).trigger("change");
+			tinymce.init({
+                selector: 'textarea',
+				statusbar: false,
+				height: 300,
+				paste_data_images: true,
+                plugins: 'advlist autolink link image lists charmap print preview emoticons table code',
+                toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | formatselect fontselect fontsizeselect | bullist numlist outdent indent blockquote | emoticons'
+            });
+		});
+	</script>
+{% endblock %}
